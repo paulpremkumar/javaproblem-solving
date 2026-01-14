@@ -1,3 +1,6 @@
+import java.sql.Date;
+import java.time.DayOfWeek;
+
 class ConditionalProblem{
     public static void main(String[] args){
         ConditionalProblem cp = new ConditionalProblem();
@@ -17,6 +20,9 @@ System.err.println(cp.prizeExceedBudgetNotAllowBuy(500.0, 300.0));
 System.out.println(cp.checkRating(4.7));
 System.out.println(cp.checkHightScore(150, 120));
 System.out.println(cp.lockAccount(5, 3));
+System.out.println(cp.outOfStock(0));
+System.out.println(cp.loginCheck("user", "pass123"));
+System.out.println(cp.activeAccount(true, false));
 }
     public boolean isVoterEligible(int age){
         if(age>18){
@@ -122,5 +128,24 @@ System.out.println(cp.lockAccount(5, 3));
         return "Out of Stock";
     }
     return "In Stock";
+ }
+ public String loginCheck(String username, String password){
+    if(username.equals("user") && password.equals("pass123")){
+        return "Login Successful";
+    }
+    return "Login Failed";
+ }  
+ public String activeAccount(boolean isMailVrified,boolean isMobileVerified){
+    if(isMailVrified && isMobileVerified){
+        return "Account Active";
+    }
+    return "Account Inactive";
+ }
+ public String isHolidaySaturdayOrSubday(Date date){
+    DayOfWeek dow = date.toLocalDate().getDayOfWeek();
+    if(dow == DayOfWeek.SATURDAY || dow == DayOfWeek.SUNDAY){
+        return "It's a holiday!";
+    }
+    return "It's a working day.";
  }
 }
